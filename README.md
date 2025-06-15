@@ -1,2 +1,3 @@
-🕹️ GameStore - React Shopping Cart Project
+🕹️ GameStore - React Shopping Cart Project 
+
 This project is a game store shopping cart app built with React as part of The Odin Project curriculum. It allows users to browse a catalog of video games (fetched from the RAWG Video Games Database API), add games to their cart, update quantities, and view a summary before a mock checkout. The project focuses on practicing React concepts such as hooks, context, routing, and state management, while also working with external APIs and responsive design. Note: This app is for educational purposes only — no real purchases are made.
