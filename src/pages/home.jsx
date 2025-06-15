@@ -7,7 +7,7 @@ export default function HomePage(){
                 <source src="/assets/ghost-cod.desktop.mp4" type="video/mp4" />
                 Your browser doesn't support HTML5 video.
             </video> */}
-            <img src="/public/assets/background.jpg" alt="background" className="absolute w-full h-full object-cover" />
+            <img src="/assets/background.jpg" alt="background" className="absolute w-full h-full object-cover" />
 
             <div className='relative flex flex-col text-white justify-center text-center m-1 rounded-2xl backdrop-blur-2xl p-4'>
                 <h1 className="text-5xl font-bold text-amber-400 glow-effect uppercase" >Game Box</h1>
