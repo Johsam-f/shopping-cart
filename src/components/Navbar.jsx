@@ -18,10 +18,6 @@ export default function Navbar({ onToggleSidebar, onToggleCart }){
             const data = await response.json();
             console.log(data); // handle this data as needed
             setGames(data.results);
-            games.forEach(game => {
-                console.log("Name:", game.name);
-                console.log("Image:", game.background_image);
-              });
         } catch (err) {
             console.error("Error fetching search results:", err);
         }
