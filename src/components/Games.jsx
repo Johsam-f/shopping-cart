@@ -12,7 +12,7 @@ export default function Games(){
         async function fetchGames() {
             try { 
 
-                let url = `https://api.rawg.io/api/games?page_size=30&key=0b73711396bc4420aaa164136aa648e9`;
+                let url = `https://api.rawg.io/api/games?page_size=36&key=0b73711396bc4420aaa164136aa648e9`;
                 if (category) {
                     url += `&genres=${category}`;  // or `&tags=${category}` depending on RAWG API
                 }
