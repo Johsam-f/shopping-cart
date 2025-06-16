@@ -18,7 +18,7 @@ export default function Cart({ showCartItems, closeCartBar }){
                     closeCartBar();
                 }} 
             />
-            <div onClick={(e) => e.stopPropagation()} className="absolute right-0 flex flex-col h-screen w-80 bg-black overflow-y-auto p-4">
+            <div onClick={(e) => e.stopPropagation()} className="absolute right-0 flex flex-col h-screen w-70 bg-black overflow-y-auto p-4">
                 <button className="text-white mb-3 font-bold flex justify-center gap-2 hover:text-blue-400 active:text-blue-400" 
                     onClick={()=> {
                         localStorage.clear()
