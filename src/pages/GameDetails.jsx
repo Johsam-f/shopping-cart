@@ -26,6 +26,25 @@ export default function GameDetails() {
   if (loading) return <p className="text-white bg-black">Loading game details...</p>;
   if (!game) return <p className="text-white bg-black">Game not found.</p>;
 
+  function handleAddToCart() {
+    const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+    const newItem = {
+      id: game.id,
+      name: game.name,
+      background_image: game.background_image,
+    };
+  
+    // no duplicates
+    const exists = cart.some(item => item.id === game.id);
+    if (!exists) {
+      cart.push(newItem);
+      sessionStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${game.name} added to cart!`);
+    } else {
+      alert(`${game.name} is already in the cart.`);
+    }
+  }
+
   return (
     <section className="bg-gray-950 min-h-screen w-full p-3 overflow-x-hidden">
       <button onClick={() => navigate(-1)} className="text-white flex backdrop-blur-lg p-1 font-extrabold hover:text-blue-400 cursor-pointer">
@@ -39,7 +58,7 @@ export default function GameDetails() {
           className="h-40 md:h-60 object-cover rounded-2xl"
         />
 
-        <button className="float-end flex gap-2 mt-2 cursor-pointer text-black hover:bg-blue-400 ml-4 bg-blue-500 h-10 p-2 rounded-sm">
+        <button onClick={handleAddToCart} className="float-end flex gap-2 mt-2 cursor-pointer text-black hover:bg-blue-400 ml-4 bg-blue-500 h-10 p-2 rounded-sm">
             <BaggageClaim /> add to cart
         </button>
 
@@ -60,6 +79,25 @@ export default function GameDetails() {
           <p className="mb-2">
              <span className="font-bold text-amber-400">Genres:</span> {game.genres?.map(g => g.name).join(', ') || "N/A"}</p>
           <p className="mt-2">{game.description_raw || "No description available."}</p>
+            {/* Store links */}
+            {game.stores && game.stores.length > 0 && (
+            <div className="mt-3">
+              <p className="font-bold text-lg mb-1 text-amber-300">Available on:</p>
+              <ul className="list-disc ml-5">
+                {game.stores.map((storeObj) => (
+                  <li key={storeObj.id}>
+                    <a
+                      href={`https://${storeObj.store.domain}`}
+                      target="_blank"
+                      className="text-blue-300 hover:text-blue-400 hover:underline"
+                    >
+                      {storeObj.store.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </section>
     </section>
