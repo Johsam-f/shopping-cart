@@ -4,10 +4,6 @@ export default function HomePage(){
 
     return(
         <div className="relative h-screen w-screen overflow-hidden grid place-content-center font-[Caprasimo]">
-            {/* <video autoPlay loop muted className="absolute w-full h-full object-cover" >
-                <source src="/assets/ghost-cod.desktop.mp4" type="video/mp4" />
-                Your browser doesn't support HTML5 video.
-            </video> */}
             <img src="/assets/background.jpg" alt="background" className="absolute w-full h-full object-cover" />
 
             <div className='relative flex flex-col text-white justify-center text-center m-1 rounded-2xl backdrop-blur-2xl p-4'>
