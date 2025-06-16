@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, ShoppingCart, Search } from "lucide-react";
 import { useState } from "react";
 
-export default function Navbar({ onToggleSidebar }){
+export default function Navbar({ onToggleSidebar, onToggleCart }){
     const [search, setSearch] = useState("");
     const [games, setGames] = useState([])
  
@@ -29,7 +29,7 @@ export default function Navbar({ onToggleSidebar }){
 
     return(
         <nav className="bg-none w-screen flex px-4 py-3 justify-between z-40">
-            <Menu color="white" className="cursor-pointer hover:text-blue-300" onClick={onToggleSidebar}/>
+            <Menu className="text-white cursor-pointer hover:text-blue-300" onClick={onToggleSidebar}/>
             <div className="relative">
                 <input value={search} type="text" placeholder="search for games..." onChange={handlesearch} 
                     className="peer bg-white h-7 self-center rounded-2xl p-3 pr-8 placeholder:italic w-[min(60vw,20rem)]"
@@ -48,10 +48,7 @@ export default function Navbar({ onToggleSidebar }){
                     })}
                 </div>
             </div>
-            
-            <Link to="/Cart" className="z-10">
-                <ShoppingCart className="text-white hover:text-blue-300"/>
-            </Link>
+            <ShoppingCart className="text-white cursor-pointer hover:text-blue-300" onClick={onToggleCart}/>
         </nav>
         
     );
