@@ -2,6 +2,7 @@ import HomePage from './pages/home'
 import ErrorPage from './pages/errorPage'
 import Dashboard from './pages/Dashboard';
 import Games from './components/Games';
+import GameDetails from './pages/GameDetails';
 
 const routes = [
     {
@@ -24,9 +25,8 @@ const routes = [
       ]
     },
     {
-      path: "/game/:id",
-      element: <ErrorPage/>,
-      // element: <GameDetails />
+      path: "/game_details/:name/:id",
+      element: <GameDetails />
     }
   ]
 

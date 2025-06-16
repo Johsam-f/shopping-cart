@@ -30,7 +30,7 @@ export default function Navbar({ onToggleSidebar }){
 
     return(
         <nav className="bg-none w-screen flex px-4 py-3 justify-between z-40">
-            <Menu color="white" className="cursor-pointer" onClick={onToggleSidebar}/>
+            <Menu color="white" className="cursor-pointer hover:text-blue-300" onClick={onToggleSidebar}/>
             <div className="relative">
                 <input value={search} type="text" placeholder="search for games..." onChange={handlesearch} 
                     className="peer bg-white h-7 self-center rounded-2xl p-3 pr-8 placeholder:italic w-[min(60vw,20rem)]"
