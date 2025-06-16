@@ -1,9 +1,11 @@
+import { Import, Loader } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 export default function Games(){
     const [games, setGames] = useState([])
     const { category } = useParams();  // get category from URL
+    const [loading, setLoading] = useState(true);
 
 
     useEffect(() => {
@@ -21,10 +23,20 @@ export default function Games(){
                 setGames(data.results);
             } catch (error) {
                 console.error("Failed to fetch games", error);
+            } finally {
+                setLoading(false);
             }
         }
         fetchGames();
     }, [category]);
+
+    if (loading) {
+        return (
+          <div className="w-full h-full flex items-center justify-center">
+            <Loader className="w-12 h-12 animate-spin text-white" />
+          </div>
+        );
+    }
 
     return (
         <div className="px-2 pb-12 h-full overflow-y-scroll">

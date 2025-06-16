@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { ChevronLeft, BaggageClaim } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Loader } from "lucide-react";
 
 export default function GameDetails() {
   const { id } = useParams();   // get game ID from URL
@@ -23,11 +24,25 @@ export default function GameDetails() {
     fetchGameDetails();
   }, [id]);
 
-  if (loading) return <p className="text-white bg-black">Loading game details...</p>;
-  if (!game) return <p className="text-white bg-black">Game not found.</p>;
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center bg-gray-950">
+        <Loader className="w-12 h-12 animate-spin text-white" />
+      </div>
+    );
+  }
+  if (!game){
+    return(
+        <section className="bg-gray-950 min-h-screen w-full p-3 overflow-x-hidden">
+            <button onClick={() => navigate(-1)} className="text-white flex backdrop-blur-lg p-1 font-extrabold hover:text-blue-400 cursor-pointer">
+                <ChevronLeft /> Back
+            </button>
+        </section>
+    )
+  }
 
   function handleAddToCart() {
-    const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const newItem = {
       id: game.id,
       name: game.name,
@@ -38,10 +53,10 @@ export default function GameDetails() {
     const exists = cart.some(item => item.id === game.id);
     if (!exists) {
       cart.push(newItem);
-      sessionStorage.setItem("cart", JSON.stringify(cart));
-      alert(`${game.name} added to cart!`);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`"${game.name}" added to cart!`);
     } else {
-      alert(`${game.name} is already in the cart.`);
+      alert(`"${game.name}" is already in the cart.`);
     }
   }
 
